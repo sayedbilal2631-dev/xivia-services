@@ -1,0 +1,25 @@
+mutation CreateNewMovie @auth(level: USER) {
+  movie_insert(data: {title: "Example Movie", year: 2024, genres: ["Action", "Sci-Fi"]})
+}
+
+query ListPublicMovies @auth(level: PUBLIC) {
+  movies(where: {year: {gt: 2000}}) {
+    id
+    title
+    year
+    genres
+  }
+}
+
+mutation UpdateMyReview($reviewId: UUID!, $reviewText: String) @auth(level: USER) {
+  review_update(key: {id: $reviewId}, data: {reviewText: $reviewText})
+}
+
+query ListMyLists @auth(level: USER) {
+  lists(where: {userId: {eq_expr: "auth.uid"}}) {
+    id
+    name
+    description
+    isPublic
+  }
+}

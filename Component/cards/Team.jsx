@@ -45,7 +45,7 @@ export default function TeamSection() {
         </Box>
       </Typography>
 
-      <Grid container spacing={4} justifyContent="center" sx={{ mt: 4 }}>
+      <Box  justifyContent="center" sx={{ mt: 4, display:'flex',gap:'20px',alignItems:'center',flexWrap:'wrap' }}>
         {teamMembers.map((member, index) => (
           <Grid item  key={index}>
             <Card
@@ -96,7 +96,7 @@ export default function TeamSection() {
             </Card>
           </Grid>
         ))}
-      </Grid>
+      </Box>
     </Box>
   );
 }

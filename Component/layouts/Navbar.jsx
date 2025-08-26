@@ -38,7 +38,9 @@ const Navbar = () => {
         { name: "Web Development", path: "#webdev" },
         { name: "Mobile Apps", path: "#mobileapps" },
         { name: "UI/UX Design", path: "#uiux" },
-        { name: "Digital Marketing", path: "#marketing" }
+        { name: "Digital Marketing", path: "#marketing" },
+        { name: "Machine Learning", path: "#marketing" },
+        { name: "SEO Opimization", path: "#marketing" },
       ]
     },
     { name: "About us", path: "#aboutus" },
@@ -63,7 +65,7 @@ const Navbar = () => {
     setMobileServicesOpen(!mobileServicesOpen);
   };
 
-  // --- Mobile ---
+  //  Mobile 
   const drawer = (
     <Box sx={{ width: 250 }} role="presentation">
       <Box sx={{ p: 2, display: 'flex', justifyContent: 'center', scale:3 }}>
@@ -74,13 +76,12 @@ const Navbar = () => {
         {navItems.map((item, index) => (
           <Box key={index}>
             <ListItem 
-              button 
-              component="a"
+              button="true"
               href={item.path}
               onClick={() => {
                 if (!item.subItems) setMobileOpen(false);
               }}
-              sx={{ justifyContent: 'space-between' }}
+              sx={{ justifyContent: 'space-between',}}
             >
               <Box>{item.name}</Box>
               {item.subItems && (
@@ -121,12 +122,12 @@ const Navbar = () => {
         p: 2,
         position: 'sticky',
         top: 0,
-        zIndex: theme.zIndex.appBar
+        zIndex: theme.zIndex.appBar,
+        px:'100px'
       }}>
         <Box component={'img'} src={'/images/logo.png'} height={54} sx={{ 
           scale: 3,
           [theme.breakpoints.down('md')]: { scale: 2.5 },
-          ml:'100px'
         }}/>
 
         {isMobile ? (

@@ -7,8 +7,13 @@ import {
   Paper,
 } from "@mui/material";
 import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
-
+import { useState } from "react";
 export default function Aboutus() {
+  const [expanded, setExpanded] = useState(false);
+
+  const handleToggle = () => {
+    setExpanded(!expanded);
+  };
   return (
     <Box
     id='aboutus'
@@ -153,35 +158,47 @@ export default function Aboutus() {
             Choose Us?
           </Box>
         </Typography>
-        <Typography
-          variant="body1"
+      <Typography
+        variant="body1"
+        sx={{
+          mb: 3,
+          color: "text.secondary",
+          lineHeight: 1.8,
+          textAlign: { xs: "center", md: "left" },
+        }}
+      >
+        Our team is here to give you personalized support within the hour
+        available 24/7. In accordance with our commitment to providing superior
+        and professional service. Join daily live webinars, watch our tutorials,
+        or browse through our knowledge base.
+        {expanded && (
+          <>
+            {" "}
+            We also provide one-on-one consultation sessions tailored to your
+            business needs. Our experts ensure you stay ahead with the latest
+            tools, strategies, and updates. With our global network, you can
+            connect with specialists anytime, anywhere, and take your growth to
+            the next level.
+          </>
+        )}
+      </Typography>
+
+      <Box textAlign={{ xs: "center", md: "left" }}>
+        <Button
+          onClick={handleToggle}
+          variant="contained"
+          size="large"
           sx={{
-            mb: 3,
-            color: "text.secondary",
-            lineHeight: 1.8,
-            textAlign: { xs: "center", md: "left" },
+            backgroundColor: "#0d6efd",
+            textTransform: "none",
+            fontWeight: "bold",
+            "&:hover": { backgroundColor: "#0056b3" },
           }}
         >
-          Our team is here to give you personalized support within the hour
-          available 24/7. In accordance with our commitment to providing
-          superior and professional service. Join daily live webinars, watch
-          our tutorials, or browse through our knowledge base.
-        </Typography>
-        <Box textAlign={{ xs: "center", md: "left" }}>
-          <Button
-            variant="contained"
-            size="large"
-            sx={{
-              backgroundColor: "#0d6efd",
-              textTransform: "none",
-              fontWeight: "bold",
-              "&:hover": { backgroundColor: "#0056b3" },
-            }}
-          >
-            Read More
-          </Button>
+          {expanded ? "Read Less" : "Read More"}
+        </Button>
+      </Box>
         </Box>
       </Box>
-    </Box>
   );
 }

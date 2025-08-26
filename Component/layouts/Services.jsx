@@ -27,21 +27,21 @@ const Services = () => {
             bgcolor: '#0099FF'
         },
         {
-            id: 1,
+            id: 4,
             icon: '/download.svg',
             text: 'Digital Marketing',
             detail: 'Grow your brand, attract leads, and dominate your market with data-driven digital marketing strategies. From social media to PPC, we optimize campaigns for maximum ROI and long-term success.',
             bgcolor: '#0097EB'
         },
         {
-            id: 2,
-            icon: '/download2.svg',
-            text: 'Cloud Solutions',
-            detail: 'Scale effortlessly with secure, reliable cloud infrastructure tailored to your business. We provide seamless migration, storage, and deployment solutions to enhance efficiency and reduce costs.',
-            bgcolor: '#39D5D2'
+            id: 5,
+            icon: '/machine.svg',
+            text: 'Machine Learning',
+            detail: 'Unlock the power of data with intelligent machine learning solutions. We build predictive models, recommendation systems, and AI-driven automation to help businesses innovate, optimize operations, and make smarter decisions.',
+            bgcolor: '#8A2BE2'
         },
         {
-            id: 3,
+            id: 6,
             icon: '/download3.svg',
             text: 'SEO Optimization',
             detail: 'Dominate search rankings and drive organic traffic with our expert SEO strategies. We optimize your website for visibility, performance, and higher conversions through proven techniques.',
@@ -49,18 +49,18 @@ const Services = () => {
         },
     ];
 
- 
+
 
     return (
         <Box
-        id='services'
-         sx={{
-            textAlign: 'center',
-            my: { xs: 3, sm: 4, md: 6 },
-            px: {xs: 2,sm: 3,md: 4,lg: 6,xl: 8},
-            maxWidth: '1800px',
-            mx: 'auto'
-        }}>
+            id='services'
+            sx={{
+                textAlign: 'center',
+                my: { xs: 3, sm: 4, md: 6 },
+                px: { xs: 2, sm: 3, md: 4, lg: 6, xl: 8 },
+                maxWidth: '1800px',
+                mx: 'auto'
+            }}>
             <Typography
                 variant="h4"
                 fontWeight="bold"
@@ -110,7 +110,7 @@ const Services = () => {
                 Determine The Service You Need
             </Typography>
 
-            {/* Services Section - Flexbox Implementation */}
+            {/* Services Section */}
             <Box sx={{
                 display: 'flex',
                 flexWrap: 'wrap',
@@ -123,13 +123,14 @@ const Services = () => {
                         key={item.id}
                         sx={{
                             flex: '1 1',
+                            minHeight: '300px',
+                            maxHeight: '350px',
                             minWidth: { xs: '100%', sm: 'calc(50% - 16px)', md: 'calc(33.333% - 22px)' },
                             maxWidth: { xs: '100%', sm: 'calc(50% - 16px)', md: 'calc(33.333% - 22px)' },
                             display: 'flex',
                             flexDirection: 'column',
                             alignItems: 'center',
                             p: { xs: 2, sm: 3 },
-                            height: '100%',
                             borderRadius: '12px',
                             bgcolor: 'background.paper',
                             boxShadow: theme.shadows[2],
@@ -184,8 +185,8 @@ const Services = () => {
                 ))}
             </Box>
 
-          
-           
+
+
         </Box>
     );
 };

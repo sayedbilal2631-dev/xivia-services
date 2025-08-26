@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import {
     Box,
     Typography,
-    Button,
     IconButton,
     Card,
     CardContent,
@@ -25,19 +24,22 @@ const projects = [
         title: "Fintech Mobile App",
         description: "Redesigned banking experience with 40% faster transactions",
         category: "Mobile Development",
-        client: "Global Bank Inc."
+        client: "Global Bank Inc.",
+        link:''
     },
     {
         title: "E-commerce Platform",
         description: "Scalable solution handling 10,000+ daily transactions",
         category: "Web Development",
-        client: "UrbanStyle Retail"
+        client: "UrbanStyle Retail",
+        link:'https://usmanmotors.vercel.app/'
     },
     {
-        title: "Healthcare Dashboard",
+        title: "Fabrics Dashboard",
         description: "Real-time patient monitoring system with AI analytics",
         category: "SaaS Solution",
-        client: "MediCare Systems"
+        client: "MediCare Systems",
+        link:'https://mir-cloths.vercel.app/'
     }
 ];
 
@@ -58,8 +60,13 @@ const Gallery = () => {
         );
     };
 
+    setTimeout(() => {
+        handleNext()
+    }, 4000);
+
     return (
         <Box
+        id='gallery'
             sx={{
                 width: "100%",
                 minHeight: { xs: "auto", md: "100vh" },
@@ -77,7 +84,8 @@ const Gallery = () => {
             }}
         >
             {/* Left Section */}
-            <Box sx={{
+            <Box 
+            sx={{
                 flex: 1,
                 maxWidth: { xs: "100%", sm: "80%", md: "450px", lg: "500px", xl: "550px" },
                 textAlign: { xs: "center", md: "left" },
@@ -135,7 +143,8 @@ const Gallery = () => {
                 </Typography>
 
                 {/* Arrows */}
-                <Box sx={{
+                <Box 
+                sx={{
                     display: "flex",
                     gap: 2,
                     justifyContent: { xs: "center", md: "flex-start" },
@@ -247,7 +256,8 @@ const Gallery = () => {
                             backdropFilter: "blur(10px)",
                         }}
                     >
-                        <CardContent sx={{
+                        <CardContent
+                         sx={{
                             p: {
                                 xs: 1.5,
                                 sm: 2,
@@ -301,26 +311,35 @@ const Gallery = () => {
                                 {projects[currentImageIndex].description}
                             </Typography>
                             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                                <Button
-                                    variant="contained"
+                                <Box
+                                    component="a"
+                                    href={projects[currentImageIndex].link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     sx={{
+                                        display: "inline-block",
+                                        textDecoration: "none",
                                         background: "#3db8ff",
+                                        color: "#fff",
                                         textTransform: "none",
                                         fontWeight: "bold",
+                                        cursor: "pointer",
                                         fontSize: {
                                             xs: "0.7rem",
                                             sm: "0.8rem",
                                             md: "0.85rem",
-                                            lg: "0.9rem"
+                                            lg: "0.9rem",
                                         },
                                         px: { xs: 1.5, sm: 2, md: 2.5 },
                                         py: { xs: 0.5, sm: 1 },
+                                        borderRadius: "4px",
                                         "&:hover": { background: "#1a97db" },
-                                        boxShadow: "0 4px 6px rgba(0,0,0,0.1)"
+                                        boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
                                     }}
                                 >
-                                    View Case Study
-                                </Button>
+                                    View Site
+                                </Box>
+
                             </motion.div>
                         </CardContent>
                     </Card>

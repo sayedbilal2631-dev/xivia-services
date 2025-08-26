@@ -18,7 +18,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en"
+    crosspilot=""
+    cz-shortcut-listen="true"
+    >
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {children}
       </body>

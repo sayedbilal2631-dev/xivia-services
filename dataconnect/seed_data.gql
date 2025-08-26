@@ -1,0 +1,16 @@
+mutation SeedData @auth(level: USER) {
+  movie_upsertMany(data: [
+    {
+      id: "550e8400-e29b-41d4-a716-446655440000",
+      title: "Inception",
+      genres: ["sci-fi"],
+      year: 2010
+    },
+    {
+      id: "550e8400-e29b-41d4-a716-446655440001",
+      title: "The Matrix",
+      genres: ["action", "sci-fi"],
+      year: 1999
+    }
+  ])
+}
