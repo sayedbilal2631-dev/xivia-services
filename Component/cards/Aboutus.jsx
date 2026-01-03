@@ -1,13 +1,7 @@
-import React from "react";
-import {
-  Box,
-  Grid,
-  Typography,
-  Button,
-  Paper,
-} from "@mui/material";
 import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
+import { Box, Typography, Button, Paper,} from "@mui/material";
 import { useState } from "react";
+import React from "react";
 export default function Aboutus() {
   const [expanded, setExpanded] = useState(false);
 

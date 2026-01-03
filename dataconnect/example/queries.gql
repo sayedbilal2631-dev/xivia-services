@@ -1,25 +1,67 @@
-mutation CreateNewMovie @auth(level: USER) {
-  movie_insert(data: {title: "Example Movie", year: 2024, genres: ["Action", "Sci-Fi"]})
+mutation CreateInquiry(
+  $name: String!
+  $email: String!
+  $message: String!
+  $preferredService: String
+  $phoneNumber: String
+  $budgetRange: String
+) @auth(level: PUBLIC, insecureReason: "This operation is safe to expose to the public") {
+  inquiry_insert(
+    data: {
+      name: $name
+      email: $email
+      message: $message
+      preferredService: $preferredService
+      phoneNumber: $phoneNumber
+      budgetRange: $budgetRange
+      createdAt_expr: "request.time"
+    }
+  )
 }
 
-query ListPublicMovies @auth(level: PUBLIC) {
-  movies(where: {year: {gt: 2000}}) {
+query ListProjects @auth(level: PUBLIC, insecureReason: "This operation is safe to expose to the public") {
+  projects {
     id
     title
-    year
-    genres
+    description
+    startDate
+    endDate
+    clientName
+    websiteUrl
+    imageUrls
+    technologiesUsed
   }
 }
 
-mutation UpdateMyReview($reviewId: UUID!, $reviewText: String) @auth(level: USER) {
-  review_update(key: {id: $reviewId}, data: {reviewText: $reviewText})
+mutation CreateTeamMember(
+  $name: String!
+  $bio: String!
+  $role: String!
+  $email: String
+  $linkedInUrl: String
+  $profilePictureUrl: String
+  $skills: [String!]
+) @auth(level: PUBLIC, insecureReason: "This operation is safe to expose to the public") {
+  teamMember_insert(
+    data: {
+      name: $name
+      bio: $bio
+      role: $role
+      email: $email
+      linkedInUrl: $linkedInUrl
+      profilePictureUrl: $profilePictureUrl
+      skills: $skills
+    }
+  )
 }
 
-query ListMyLists @auth(level: USER) {
-  lists(where: {userId: {eq_expr: "auth.uid"}}) {
+query ListServices @auth(level: PUBLIC, insecureReason: "This operation is safe to expose to the public") {
+  services {
     id
     name
     description
-    isPublic
+    estimatedTimeline
+    priceRange
+    features
   }
 }

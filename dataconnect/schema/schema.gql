@@ -1,52 +1,38 @@
-type User @table {
-  displayName: String!
-  createdAt: Timestamp!
-  email: String
-  photoUrl: String
-}
-
-type Movie @table {
-  title: String!
-  year: Int!
-  createdAt: Timestamp!
-  summary: String
-  genres: [String]
-  runtimeMinutes: Int
-}
-
-type Watch @table {
-  user: User!
-  movie: Movie!
-  watchDate: Date!
-  location: String
-  createdAt: Timestamp!
-  review: Review
-}
-
-type Review @table {
-  user: User!
-  movie: Movie!
-  watch: Watch!
-  rating: Int!
-  reviewText: String
-  isPublic: Boolean!
-  shareToken: String
-  createdAt: Timestamp!
-  updatedAt: Timestamp!
-}
-
-type List @table {
-  user: User!
+type Service @table {
   name: String!
-  description: String
-  isPublic: Boolean!
-  createdAt: Timestamp!
-  updatedAt: Timestamp!
+  description: String!
+  priceRange: String
+  estimatedTimeline: String
+  features: [String]
 }
 
-type ListMovie @table {
-  list: List!
-  movie: Movie!
-  position: Int!
-  note: String
+type Project @table {
+  title: String!
+  description: String!
+  startDate: Date!
+  endDate: Date!
+  clientName: String
+  websiteUrl: String
+  imageUrls: [String]
+  technologiesUsed: [String]
+}
+
+type TeamMember @table {
+  name: String!
+  role: String!
+  bio: String!
+  profilePictureUrl: String
+  email: String
+  linkedInUrl: String
+  skills: [String]
+}
+
+type Inquiry @table {
+  name: String!
+  email: String!
+  message: String!
+  createdAt: Timestamp!
+  phoneNumber: String
+  preferredService: String
+  budgetRange: String
 }

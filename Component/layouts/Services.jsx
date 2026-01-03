@@ -1,64 +1,30 @@
 "use client";
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Container, Typography, useTheme } from "@mui/material";
+import { collection, getDocs, query } from "firebase/firestore";
+import React, { useState } from "react";
+import { db } from "@/app/firebase";
 
 const Services = () => {
     const theme = useTheme();
+    const [service, setServices] = useState([])
 
-    const services = [
-        {
-            id: 1,
-            icon: '/download4.svg',
-            text: 'Web Development',
-            detail: 'Transform your ideas into stunning, high-performance websites tailored to your business needs. Our expert developers create responsive, scalable, and secure web applications using the latest technologies like React, Node.js, and Laravel.',
-            bgcolor: '#FFD873'
-        },
-        {
-            id: 2,
-            icon: '/download5.svg',
-            text: 'Mobile Development',
-            detail: 'Reach your audience on the go with sleek, high-speed mobile apps for iOS and Android. We design intuitive, feature-rich applications that enhance engagement, streamline operations, and drive growth—whether for startups or enterprises.',
-            bgcolor: '#FF9B73'
-        },
-        {
-            id: 3,
-            icon: '/download6.svg',
-            text: 'UI/UX Design',
-            detail: 'Captivate users with visually stunning and highly functional interfaces. Our design team crafts pixel-perfect, user-centric experiences that boost conversions, improve usability, and reflect your brand identity flawlessly.',
-            bgcolor: '#0099FF'
-        },
-        {
-            id: 4,
-            icon: '/download.svg',
-            text: 'Digital Marketing',
-            detail: 'Grow your brand, attract leads, and dominate your market with data-driven digital marketing strategies. From social media to PPC, we optimize campaigns for maximum ROI and long-term success.',
-            bgcolor: '#0097EB'
-        },
-        {
-            id: 5,
-            icon: '/machine.svg',
-            text: 'Machine Learning',
-            detail: 'Unlock the power of data with intelligent machine learning solutions. We build predictive models, recommendation systems, and AI-driven automation to help businesses innovate, optimize operations, and make smarter decisions.',
-            bgcolor: '#8A2BE2'
-        },
-        {
-            id: 6,
-            icon: '/download3.svg',
-            text: 'SEO Optimization',
-            detail: 'Dominate search rankings and drive organic traffic with our expert SEO strategies. We optimize your website for visibility, performance, and higher conversions through proven techniques.',
-            bgcolor: '#7AC143'
-        },
-    ];
+    const getDocuments = async () => {
+        const serviceRef = query(collection(db, "services"));
+        const docs = await getDocs(serviceRef);
+        const allData = docs.docs.map((doc)=>doc.data())
+        setServices(allData)
+    };
 
-
-
+    React.useEffect(() => {
+        getDocuments()
+    },[])
     return (
-        <Box
+        <Container
             id='services'
             sx={{
                 textAlign: 'center',
                 my: { xs: 3, sm: 4, md: 6 },
-                px: { xs: 2, sm: 3, md: 4, lg: 6, xl: 8 },
-                maxWidth: '1800px',
+                px: { xs: 1, sm: 3, md: 4, lg: 6, xl: 8 },
                 mx: 'auto'
             }}>
             <Typography
@@ -114,23 +80,22 @@ const Services = () => {
             <Box sx={{
                 display: 'flex',
                 flexWrap: 'wrap',
-                justifyContent: 'center',
                 gap: { xs: 2, sm: 3, md: 4 },
                 mb: { xs: 2, sm: 3 }
             }}>
-                {services.map((item) => (
+                {service.map((item) => (
                     <Box
                         key={item.id}
                         sx={{
                             flex: '1 1',
-                            minHeight: '300px',
+                            minHeight: '250px',
                             maxHeight: '350px',
                             minWidth: { xs: '100%', sm: 'calc(50% - 16px)', md: 'calc(33.333% - 22px)' },
                             maxWidth: { xs: '100%', sm: 'calc(50% - 16px)', md: 'calc(33.333% - 22px)' },
                             display: 'flex',
                             flexDirection: 'column',
                             alignItems: 'center',
-                            p: { xs: 2, sm: 3 },
+                            p: { xs: 1, sm: 3 },
                             borderRadius: '12px',
                             bgcolor: 'background.paper',
                             boxShadow: theme.shadows[2],
@@ -187,7 +152,7 @@ const Services = () => {
 
 
 
-        </Box>
+        </Container>
     );
 };
 

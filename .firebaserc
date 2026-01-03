@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "singlemuslims-524fd"
-  }
+    "xivaservices": "xivaservices",
+    "default": "xivaservices"
+  },
+  "targets": {},
+  "etags": {}
 }

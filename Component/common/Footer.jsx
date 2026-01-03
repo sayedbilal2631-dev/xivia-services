@@ -1,9 +1,27 @@
 "use client";
-
-import { Box, Grid, Typography, Link, IconButton } from "@mui/material";
 import { Facebook, Twitter, Instagram, LocationOn, Phone, Email } from "@mui/icons-material";
+import { Box, Grid, Typography, Link, IconButton } from "@mui/material";
+import { collection,  getDocs } from "firebase/firestore";
+import { useEffect, useState } from "react";
+import { db } from "@/app/firebase";
 
 export default function Footer() {
+  const [contact, setContact] = useState([]);
+
+  useEffect(() => {
+    const fetchContact = async () => {
+      const ref = collection(db, "contact");
+      const snapshot = await getDocs(ref);
+
+      const contactData = snapshot.docs.map(doc => ({
+        ...doc.data(),
+      }));
+
+      setContact(...contactData);
+    };
+
+    fetchContact();
+  }, []);
   return (
     <>
       <Box id="contactus" component="footer" sx={{ width: "100%", pt: 6 }}>
@@ -21,22 +39,21 @@ export default function Footer() {
           }}
         >
           {/* Logo and Description */}
-          <Grid item xs={12} md={3} maxWidth={300}>
-            <Box sx={{ display: "flex"}}>
-              <Box component="img" src="/images/footerLogo.png" height={84} alt="Xivians Logo"  />
+          <Grid size={{ xs: 12, md: 3 }} maxWidth={300}>
+            <Box sx={{ display: "flex" }}>
+              <Box component="img" src="/images/footerLogo.png" height={84} alt="Xivians Logo" />
             </Box>
             <Typography
               variant="body2"
-              sx={{  lineHeight: 1.8,  }}
+              sx={{ lineHeight: 1.8, }}
             >
-              We deliver innovative digital solutions — from web development to branding — helping businesses
-              grow, connect, and stand out in today’s fast-paced world.
+              {contact.footerPara}
             </Typography>
           </Grid>
 
 
           {/* Links */}
-          <Grid item xs={12} md={3}>
+          <Grid size={{ xs: 12, md: 3 }} >
             <Typography variant="h6" fontWeight="bold" gutterBottom>
               QUICK LINKS
             </Typography>
@@ -49,7 +66,7 @@ export default function Footer() {
           </Grid>
 
           {/* Get in Touch */}
-          <Grid item xs={12} md={3}>
+          <Grid size={{ xs: 12, md: 3 }}>
             <Typography variant="h6" fontWeight="bold" gutterBottom>
               GET IN TOUCH
             </Typography>
@@ -62,15 +79,15 @@ export default function Footer() {
               sx={{ display: "flex", alignItems: "center", mb: 1 }}
             >
               <LocationOn fontSize="small" sx={{ mr: 1, color: "#fff" }} />
-              <Typography variant="body2">Old city Street, USA 1212 New York - 3500</Typography>
+              <Typography variant="body2">{contact.address || "Tahsil Matta Swat"}</Typography>
             </Link>
             <Link href="tel:1234567891000" underline="none" sx={{ display: "flex", alignItems: "center", mb: 1 }}>
               <Phone fontSize="small" sx={{ mr: 1, color: "#fff" }} />
-              <Typography variant="body2">123 456 7891000</Typography>
+              <Typography variant="body2">{contact.phone}</Typography>
             </Link>
             <Link href="mailto:infoname@mail.com" underline="none" sx={{ display: "flex", alignItems: "center" }}>
               <Email fontSize="small" sx={{ mr: 1, color: "#fff" }} />
-              <Typography variant="body2">infoname@mail.com</Typography>
+              <Typography variant="body2">{contact.email}</Typography>
             </Link>
           </Grid>
         </Grid>

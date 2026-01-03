@@ -1,16 +1,67 @@
-mutation SeedData @auth(level: USER) {
-  movie_upsertMany(data: [
+mutation CreateSeedData @auth(level: PUBLIC, insecureReason: "This operation is used to seed the database with initial data and does not require authentication.") @transaction {
+  service_insertMany(data: [
     {
-      id: "550e8400-e29b-41d4-a716-446655440000",
-      title: "Inception",
-      genres: ["sci-fi"],
-      year: 2010
+      name: "Website Development",
+      description: "Custom website development tailored to your business needs.",
+      estimatedTimeline: "4-6 weeks",
+      priceRange: "$5,000 - $15,000",
+      features: ["Responsive design", "SEO optimization", "CMS integration"]
     },
     {
-      id: "550e8400-e29b-41d4-a716-446655440001",
-      title: "The Matrix",
-      genres: ["action", "sci-fi"],
-      year: 1999
+      name: "Mobile App Development",
+      description: "Native iOS and Android app development for your unique ideas.",
+      estimatedTimeline: "3-6 months",
+      priceRange: "$10,000 - $50,000",
+      features: ["Push notifications", "User authentication", "In-app purchases"]
+    },
+    {
+      name: "Digital Marketing",
+      description: "Comprehensive digital marketing strategies to boost your online presence.",
+      estimatedTimeline: "Ongoing",
+      priceRange: "$1,000 - $5,000/month",
+      features: ["Social media marketing", "PPC advertising", "Content creation"]
+    }
+  ])
+  teamMember_insertMany(data: [
+    {
+      name: "John Doe",
+      role: "Lead Developer",
+      bio: "Experienced full-stack developer with a passion for clean code.",
+      profilePictureUrl: "https://example.com/john-doe.jpg",
+      email: "john.doe@example.com",
+      linkedInUrl: "https://linkedin.com/in/johndoe",
+      skills: ["JavaScript", "React", "Node.js"]
+    },
+    {
+      name: "Jane Smith",
+      role: "UI/UX Designer",
+      bio: "Creative designer focused on user-centered design and intuitive interfaces.",
+      profilePictureUrl: "https://example.com/jane-smith.jpg",
+      email: "jane.smith@example.com",
+      linkedInUrl: "https://linkedin.com/in/janesmith",
+      skills: ["Figma", "Sketch", "Adobe XD"]
+    }
+  ])
+  project_insertMany(data: [
+    {
+      title: "Acme Corp Website Redesign",
+      description: "Complete website redesign for improved user experience and SEO.",
+      clientName: "Acme Corporation",
+      startDate: "2024-01-15",
+      endDate: "2024-03-30",
+      imageUrls: ["https://example.com/acme-1.jpg", "https://example.com/acme-2.jpg"],
+      technologiesUsed: ["React", "Node.js", "PostgreSQL"],
+      websiteUrl: "https://acmecorp.com"
+    },
+    {
+      title: "Beta App Development",
+      description: "Development of a mobile app for social networking.",
+      clientName: "Beta Innovations",
+      startDate: "2023-11-01",
+      endDate: "2024-05-31",
+      imageUrls: ["https://example.com/beta-1.jpg", "https://example.com/beta-2.jpg"],
+      technologiesUsed: ["Swift", "Kotlin", "Firebase"],
+      websiteUrl: null
     }
   ])
 }
