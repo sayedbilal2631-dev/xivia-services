@@ -1,7 +1,7 @@
 "use client";
 import { Facebook, Twitter, Instagram, LocationOn, Phone, Email } from "@mui/icons-material";
 import { Box, Grid, Typography, Link, IconButton } from "@mui/material";
-import { collection,  getDocs } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db } from "@/app/firebase";
 
@@ -22,6 +22,8 @@ export default function Footer() {
 
     fetchContact();
   }, []);
+  const now = new Date();
+  const year = `© Xivians ${now.getFullYear()} | All Rights Reserved`
   return (
     <>
       <Box id="contactus" component="footer" sx={{ width: "100%", pt: 6 }}>
@@ -107,7 +109,7 @@ export default function Footer() {
           color: "#000",
         }}
       >
-        <Typography variant="body2">© Xivians 2023 | All Rights Reserved</Typography>
+        <Typography variant="body2">{year}</Typography>
         <Box>
           <IconButton color="inherit" href="#"><Facebook /></IconButton>
           <IconButton color="inherit" href="#"><Twitter /></IconButton>
