@@ -126,8 +126,8 @@ export default function Aboutus() {
             }}
           >
             {[
-              { number: "200+", label: "Team member" },
-              { number: "900+", label: "Client review" },
+              { number: "20+", label: "Team member" },
+              { number: "90+", label: "Client review" },
               { number: "20+", label: "Complete project" },
             ].map((stat) => (
               <Box key={stat.label} sx={{ textAlign: "center", flex: 1 }}>
