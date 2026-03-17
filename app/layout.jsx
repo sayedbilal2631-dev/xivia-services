@@ -17,9 +17,9 @@ export const metadata = {
     "Plugging Great Ideas Into Your Brand - Specialists in turning visionary concepts into high-performing digital solutions",
 
   icons: {
-    icon: "/favicon.ico",          
-    shortcut: "/favicon.ico",      
-    apple: "/favicon.ico",         
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
   },
 
   manifest: "/manifest.json",
@@ -30,7 +30,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <meta name="google-site-verification" content="GiZUaO8maDfxcUtjFK2fItMf-uXEgAblnaxfULKOJ9c" />
+      <head>
+        <meta name="google-site-verification" content="GiZUaO8maDfxcUtjFK2fItMf-uXEgAblnaxfULKOJ9c" />
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {children}
       </body>
