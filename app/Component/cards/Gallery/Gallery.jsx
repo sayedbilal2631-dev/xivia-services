@@ -4,7 +4,7 @@ import { collection, getDocs } from "firebase/firestore";
 import React, { useState, useEffect } from "react";
 import GalleryRight from "./GalleryRight";
 import GalleryLeft from "./GalleryLeft";
-import { db } from "@/app/firebase"; 
+import { db } from "../../../firebase"; 
 
 
 const Gallery = () => {

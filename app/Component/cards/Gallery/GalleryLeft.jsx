@@ -1,5 +1,5 @@
 "use client";
-import { db } from "@/app/firebase";
+import { db } from "../../../firebase";
 import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";

@@ -3,7 +3,7 @@ import { Facebook, Twitter, Instagram, LocationOn, Phone, Email } from "@mui/ico
 import { Box, Grid, Typography, Link, IconButton } from "@mui/material";
 import { collection, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { db } from "@/app/firebase";
+import { db } from "../../firebase";
 
 export default function Footer() {
   const [contact, setContact] = useState([]);

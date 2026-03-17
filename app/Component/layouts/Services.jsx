@@ -2,7 +2,7 @@
 import { Box, Container, Typography, useTheme } from "@mui/material";
 import { collection, getDocs, query } from "firebase/firestore";
 import React, { useState } from "react";
-import { db } from "@/app/firebase";
+import { db } from "../../firebase";
 
 const Services = () => {
     const theme = useTheme();

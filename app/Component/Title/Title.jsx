@@ -2,7 +2,7 @@
 import { Typography, useMediaQuery, useTheme } from "@mui/material";
 import { collection, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { db } from "@/app/firebase";
+import { db } from "../../firebase";
 
 const Title = () => {
   const theme = useTheme();

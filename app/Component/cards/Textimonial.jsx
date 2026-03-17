@@ -4,7 +4,7 @@ import {  collection, getDocs, query, setDoc } from "firebase/firestore";
 import "slick-carousel/slick/slick-theme.css";
 import { useEffect, useState } from "react";
 import "slick-carousel/slick/slick.css";
-import { db } from "@/app/firebase";
+import { db } from "../../firebase";
 import dynamic from "next/dynamic";
 
 const Slider = dynamic(() => import("react-slick"), { ssr: false });

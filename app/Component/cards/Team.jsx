@@ -3,7 +3,7 @@ import { Grid, Typography, Card, CardContent, IconButton, Box, } from "@mui/mate
 import { Facebook, Instagram, Twitter } from "@mui/icons-material";
 import { collection, getDocs, query } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
-import { db } from "@/app/firebase";
+import { db } from "../../firebase";
 import Image from "next/image";
 
 export default function TeamSection() {

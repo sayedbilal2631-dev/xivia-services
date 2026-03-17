@@ -3,29 +3,29 @@ import { motion } from "framer-motion";
 import dynamic from 'next/dynamic';
 
 // Dynamically import all heavy components
-const Aboutus = dynamic(() => import("@/app/Component/cards/Aboutus"), {
+const Aboutus = dynamic(() => import("./Component/cards/Aboutus"), {
   loading: () => <div className="h-96 bg-gray-100 animate-pulse rounded-lg"></div>,
 });
 
-const Gallery = dynamic(() => import("@/app/Component/cards/Gallery/Gallery"), {
+const Gallery = dynamic(() => import("./Component/cards/Gallery/Gallery"), {
   loading: () => <div className="h-96 bg-gray-100 animate-pulse rounded-lg"></div>,
 });
 
-const Team = dynamic(() => import("@/app/Component/cards/Team"), {
+const Team = dynamic(() => import("./Component/cards/Team"), {
   loading: () => <div className="h-96 bg-gray-100 animate-pulse rounded-lg"></div>,
 });
 
-const TestimonialCarousel = dynamic(() => import("@/app/Component/cards/Textimonial"), {
+const TestimonialCarousel = dynamic(() => import("./Component/cards/Textimonial"), {
   loading: () => <div className="h-64 bg-gray-100 animate-pulse rounded-lg"></div>,
 });
 
-const Footer = dynamic(() => import("@/app/Component/common/Footer"), {
+const Footer = dynamic(() => import("./Component/common/Footer"), {
   loading: () => <div className="h-48 bg-gray-800 animate-pulse"></div>,
 });
 
-const HeroSection = dynamic(() => import("@/app/Component/layouts/HeroSection"));
-const Services = dynamic(() => import("@/app/Component/layouts/Services"));
-const Navbar = dynamic(() => import("@/app/Component/layouts/Navbar"));
+const HeroSection = dynamic(() => import("./Component/layouts/HeroSection"));
+const Services = dynamic(() => import("./Component/layouts/Services"));
+const Navbar = dynamic(() => import("./Component/layouts/Navbar"));
 
 export default function Home() {
   const fadeInUp = {
