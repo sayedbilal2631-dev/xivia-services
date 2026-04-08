@@ -57,7 +57,7 @@ export default function Home() {
       >
         <Services />
       </motion.div>
-<AppLayout />
+      <AppLayout />
       {/* Gallery */}
       <motion.div
         initial="hidden"
