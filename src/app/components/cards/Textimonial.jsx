@@ -1,6 +1,6 @@
 "use client";
 import { Box, Typography, Card, Avatar, Rating, useTheme, useMediaQuery } from "@mui/material";
-import {  collection, getDocs, query, setDoc } from "firebase/firestore";
+import {  collection, getDocs, query,  } from "firebase/firestore";
 import "slick-carousel/slick/slick-theme.css";
 import { useEffect, useState } from "react";
 import "slick-carousel/slick/slick.css";
@@ -12,7 +12,7 @@ const Slider = dynamic(() => import("react-slick"), { ssr: false });
 const TestimonialCarousel = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-  const isTablet = useMediaQuery(theme.breakpoints.between('sm', 'md'));
+  // const isTablet = useMediaQuery(theme.breakpoints.between('sm', 'md'));
   const [review, setReview] = useState([]);
 
   const getReviews = async () => {

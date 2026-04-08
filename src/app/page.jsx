@@ -1,31 +1,32 @@
 "use client";
+import { Box } from "@mui/material";
 import { motion } from "framer-motion";
 import dynamic from 'next/dynamic';
-
+import AppLayout from "./components/cards/apps/AppLayout";
 // Dynamically import all heavy components
-const Aboutus = dynamic(() => import("./Component/cards/Aboutus"), {
+const Aboutus = dynamic(() => import("./components/cards/Aboutus"), {
   loading: () => <div className="h-96 bg-gray-100 animate-pulse rounded-lg"></div>,
 });
 
-const Gallery = dynamic(() => import("./Component/cards/Gallery/Gallery"), {
+const Gallery = dynamic(() => import("./components/cards/Gallery/Gallery"), {
   loading: () => <div className="h-96 bg-gray-100 animate-pulse rounded-lg"></div>,
 });
 
-const Team = dynamic(() => import("./Component/cards/Team"), {
+const Team = dynamic(() => import("./components/cards/Team"), {
   loading: () => <div className="h-96 bg-gray-100 animate-pulse rounded-lg"></div>,
 });
 
-const TestimonialCarousel = dynamic(() => import("./Component/cards/Textimonial"), {
+const TestimonialCarousel = dynamic(() => import("./components/cards/Textimonial"), {
   loading: () => <div className="h-64 bg-gray-100 animate-pulse rounded-lg"></div>,
 });
 
-const Footer = dynamic(() => import("./Component/common/Footer"), {
+const Footer = dynamic(() => import("./components/common/Footer"), {
   loading: () => <div className="h-48 bg-gray-800 animate-pulse"></div>,
 });
 
-const HeroSection = dynamic(() => import("./Component/layouts/HeroSection"));
-const Services = dynamic(() => import("./Component/layouts/Services"));
-const Navbar = dynamic(() => import("./Component/layouts/Navbar"));
+const HeroSection = dynamic(() => import("./components/layouts/HeroSection"));
+const Services = dynamic(() => import("./components/layouts/Services"));
+const Navbar = dynamic(() => import("./components/layouts/Navbar"));
 
 export default function Home() {
   const fadeInUp = {
@@ -34,7 +35,7 @@ export default function Home() {
   };
 
   return (
-    <>
+    <Box maxWidth={'1600px'} mx={'auto'} >
       <Navbar />
 
       {/* Hero Section - Keep immediate load */}
@@ -56,7 +57,7 @@ export default function Home() {
       >
         <Services />
       </motion.div>
-
+<AppLayout />
       {/* Gallery */}
       <motion.div
         initial="hidden"
@@ -99,6 +100,6 @@ export default function Home() {
 
       {/* Footer */}
       <Footer />
-    </>
+    </Box>
   );
 }
